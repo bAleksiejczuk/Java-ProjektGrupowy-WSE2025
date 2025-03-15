@@ -51,8 +51,7 @@
   <% if(session.getAttribute("user") != null) { %>
     <h2>Witaj ${user.name}!!!</h2>
   <form action="logout">
-    <input type="sumbit" value="Wyloguj się">
-  </form>
+    <input type="submit" value="Wyloguj">  </form>
   <% } else { %>
   <h2>Witaj gościu!!!</h2>
 
