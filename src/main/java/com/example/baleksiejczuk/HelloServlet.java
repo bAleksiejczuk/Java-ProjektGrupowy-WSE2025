@@ -21,10 +21,11 @@ public class HelloServlet extends HttpServlet {
 
         String name = request.getParameter("email");
         String surname = request.getParameter("surname");
+        String email = request.getParameter("email");
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        user = new User(name,surname,login,password);
+        user = new User(name,surname,email,login,password);
         response.setContentType("text/html");
 
         HttpSession session = request.getSession();
@@ -32,6 +33,8 @@ public class HelloServlet extends HttpServlet {
 
         RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
         rd.forward(request,response);
+
+
 
 
 //        // Hello
