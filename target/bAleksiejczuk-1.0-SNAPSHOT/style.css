@@ -239,6 +239,7 @@ main {
 }
 
 #content {
+    text-align: justify;
     font-size: 1.1em;
     word-spacing: 2px;
 }
