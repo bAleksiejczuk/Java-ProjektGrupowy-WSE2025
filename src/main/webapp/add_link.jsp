@@ -124,8 +124,14 @@
             <form action="add-link" method="POST">
                 <h1>Wprowadź adres URL:</h1>
                 <input type="text" id="url" name="url" placeholder="https://www.google.pl/" ><br>
+
                 <h1>Nazwa Linku</h1>
                 <input type="text" id="link_name" name="link_name" placeholder="Strona startowa Google"><br>
+
+                <!-- Checkbox do ustawienia linku jako prywatny -->
+                <label for="private_link">Ustaw link jako prywatny</label>
+                <input type="checkbox" id="private_link" name="private_link"><br>
+
                 <input type="submit" value="Zapisz">
             </form>
         </div>
