@@ -1,159 +1,96 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
-<style>
-
-  #menu {
-    background: dodgerblue;
-    color: white;
-    height: 80px;
-    width: 100%;
-    text-align: center;
-    margin: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
-
-  #buttons {
-    margin-top: 20px;
-  }
-
-  a {
-    font-family: "Arial Black";
-    font-size: 16px;
-    background: white;
-    border: 0;
-    padding: 10px 20px;
-    transition-duration: 0.4s;
-    margin: 5px;
-  }
-
-  a:hover {
-    background-color: yellow;
-    color: black;
-  }
-
-
-  #main-panel {
-    width: 80%;
-    margin: 120px auto 40px;
-    padding: 20px;
-    background-color: lightblue;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    min-height: 400px;
-  }
-
-
-  #footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-    background-color: dodgerblue;
-    color: white;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    font-size: 14px;
-    margin: 0;
-  }
-
-
-  #footer p {
-    margin: 0;
-  }
-
-
-  #footer a {
-    font-size: 14px;
-    color: white;
-    text-decoration: none;
-    margin-left: 10px;
-    padding: 2px 6px;
-    background-color: lightblue;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-
-  #footer a:hover {
-    background-color: #777;
-  }
-
-
-  #footer .java-project {
-    text-align: right;
-    font-weight: bold;
-    flex-grow: 1;
-  }
-
-</style>
+<html lang="pl">
 
 <head>
-  <title>Dodaj Link</title>
+    <meta charset="UTF-8">
+    <title>TopLinker - dodaj link</title>
+
+    <meta name="description" content="Link to coś co często klikamy i wszyscy lubimy. To co jest w linkach może być śmieszne, ciekawe, interesujące, przerażające, czy też smutne. Linki są super!">
+    <meta name="authors" content="Jakub Hryniewicki, Małgorzata Kulik, Brunon Aleksiejczuk">
+
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" type="image/png" href="images/linksIcon.png" sizes="48x48">
+    <script src="static/script.js" defer></script>
 </head>
 
 <body>
-<div>
-  <div id="menu">
-    <div id="buttons">
-      <% if(session.getAttribute("user") != null) { %>
-      <h2>Witaj ${user.name}!!!</h2>
-      <% } %>
-
-      <a href="index.jsp">Strona Główna</a>
-      <a href="leadboard.jsp">Ranking</a>
-
-      <% if(session.getAttribute("user") != null) { %>
-      <a href="my_links.jsp">Moje Linki</a>
-      <a href="add_link.jsp">Dodaj Link</a>
-
-      <form action="logout">
-        <input type="submit" value="Wyloguj">
-      </form>
-      <% } else { %>
-      <a href="login.jsp">Logowanie</a>
-      <% } %>
-    </div>
-  </div>
-</div>
-      <% if(session.getAttribute("user") != null) { %>
-        <div id="main-panel">
-            <form action="add-link" method="POST">
-                <h1>Wprowadź adres URL:</h1>
-                <input type="text" id="url" name="url" placeholder="https://www.google.pl/" ><br>
-
-                <h1>Nazwa Linku</h1>
-                <input type="text" id="link_name" name="link_name" placeholder="Strona startowa Google"><br>
-
-                <!-- Checkbox do ustawienia linku jako prywatny -->
-                <label for="private_link">Ustaw link jako prywatny</label>
-                <input type="checkbox" id="private_link" name="private_link"><br>
-
-                <input type="submit" value="Zapisz">
-            </form>
+<div id="wrapper">
+    <nav id="menu">
+        <div id="inner-menu">
+            <div id="left-side-nav">
+                <a href="index.jsp"><img src="images/linksIcon.png" alt="Logo aplikacji" id="logo" title="TopLinker"></a>
+                <h2 id="welcome">Cześć, <a href="my_profile.jsp" id="username"><span id="linkers-name" title="Imię godne prawdziwego linkera!">Imie</span><!--Niech wstawia session name/login--></a><span class="i s12 y"> !</span></h2>
+            </div>
+            <div id="buttons">
+                <a class="btn b" href="index.jsp"><span id="main-btn">Strona Główna</span></a>
+                <a class="btn b" href="leadboard.jsp"><span id="rank-btn">Ranking</span></a>
+                <a class="btn b" href="my_links.jsp"><span id="my-links-btn">Moje Linki</span></a>
+                <a class="btn b" href="add_link.jsp"><span id="add-link-btn">Dodaj Link</span></a>
+                <a class="btn b" href="login.jsp"><span id="login-btn">Logowanie</span></a>
+            </div>
+            <div id="right-side-nav">
+                <a href="my_profile.jsp"><img src="images/myselficon.png" alt="Mój profil" id="myself" title="Mój profil"></a>
+                <div id="darkModeBtn" >
+                    <img src="static/moon.png" alt="Księżyc" class="moon" title="Księżyc">
+                </div>
+                <form id="logout-form" action="logout"> <!-- Tylko jeśli użytkownik jest zalogowany -->
+                    <input class="b" type="submit" value="Wyloguj">
+                </form>
+            </div>
         </div>
-      <% } else { %>
-       <div id="main-panel">
-        <h1>Zaloguj sie do aplikacji by z niej korzystac</h1>
+    </nav>
+
+    <main>
+        <div id="inner-main">
+            <header>Dodaj do <a id="top-linker" href="index.jsp" title="TopLinker czyli aplikacja do topowych linków!"><span id="top">Top</span><span id="linker">Linker</span></a> !</header>
+            <div id="desc">Czy wiedziałeś, że ta apka powstała jako prosty projekt na studia?</div>
+            <div id="content">
+                <form id="add-link-form">
+                    <label for="url">Wprowadź adres URL:</label>
+                    <input autocomplete="off" type="url" id="url" name="url" class="link-input login-input" placeholder="https://www.example.com" required>
+
+                    <label for="name">Nazwa linku:</label>
+                    <input autocomplete="off" type="text" id="name" name="name" class="link-input login-input" placeholder="Wprowadź tytuł linku" required>
+
+                    <label for="description">Opis linku: (maks. 150 znaków)</label>
+                    <textarea autocomplete="off" maxlength="150" id="description" name="description" class="link-input login-input" placeholder="Wprowadź opis linku..."></textarea>
+
+                    <div id="add-link-btns">
+                        <button class="add-link-btn btn" type="submit">Zapisz</button>
+                        <button class="add-link-btn btn" type="button">Anuluj</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
-      <% } %>
+    </main>
 
-
-<div id="footer">
-
-  <div>
-    <p>Brunon Aleksiejczuk - <a href="https://github.com/bAleksiejczuk">GitHub</a></p>
-    <p>Małgorzata Kulik - <a href="https://github.com/malkul25">GitHub</a></p>
-    <p>Jakub Hryniewicki - <a href="https://github.com/Kubbix12">GitHub</a></p>
-  </div>
-
-
-  <div class="java-project">
-    <p>Java-ProjektGrupowyWSE2025</p>
-  </div>
+    <footer>
+        <div id="inner-footer">
+            <div id="ppl">
+                <a class="git-link btn b" href="https://github.com/bAleksiejczuk" title="Twórca backendu!" target="_blank" rel="noopener noreferrer">
+                    <span class="name" id="ba">Brunon Aleksiejczuk</span>
+                    <span class="gh">Git<span class="hub">Hub</span></span>
+                </a>
+                <a class="git-link btn b" href="https://github.com/malkul25" title="Tester, grafik i człowiek od zadań specjalnych!" target="_blank" rel="noopener noreferrer">
+                    <span class="name" id="mk">Małgorzata Kulik</span>
+                    <span class="gh">Git<span class="hub">Hub</span></span>
+                </a>
+                <a class="git-link btn b" href="https://github.com/Kubbix12" title="Twórca frontendu!" target="_blank" rel="noopener noreferrer">
+                    <span class="name" id="jh">Jakub Hryniewicki</span>
+                    <span class="gh">Git<span class="hub">Hub</span></span>
+                </a>
+            </div>
+            <div id="java-project">
+                <a class="repository" href="https://github.com/bAleksiejczuk/Java-ProjektGrupowyWSE2025" target="_blank" rel="noopener noreferrer"><span title="Kliknij, aby otworzyć repozytorium na GitHubie!">Java-ProjektGrupowyWSE2025</span></a>
+            </div>
+            <span id="copyright" title="Wszelkie prawa zastrzeżone :)">Copyright &copy; 2025</span>
+        </div>
+    </footer>
 </div>
+<button id="top-btn" title="Na szczyt strony!">↑</button>
 </body>
+
 </html>
