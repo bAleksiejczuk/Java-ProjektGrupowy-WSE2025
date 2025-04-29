@@ -3,3 +3,5 @@ ABY ODPALIĆ APLIKACJE W INTELLIJ ZMIEN NAZWY FOLDERÓW :
 idea -> .idea
 
 mvn -> .mvn
+
+smarttomcat -> .smarttomcat
