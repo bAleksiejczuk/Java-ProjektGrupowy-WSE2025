@@ -817,12 +817,12 @@ header {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: all 0.4s ease;
+    transition: all 1s ease;
     background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%);
     background-size: 200% auto;
     box-shadow: 0 0 20px #eee;
-    border: 3px solid black;
-}
+    border: 3px solid #00d2ff;
+  }
 
 #top-btn.show {
     opacity: 0.7;
