@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         input.addEventListener('keydown', function (e) {
             if (e.key === 'Enter' && input.value.trim() !== '') {
                 spinners.forEach(spinner => {
-                    spinner.classList.add('fast-spin');
+                    spinner.classList.add('fast-pulse');
                     spinner.style.animationPlayState = 'running';
                 });
 
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 setTimeout(() => {
                     spinners.forEach(spinner => {
-                        spinner.classList.remove('fast-spin');
+                        spinner.classList.remove('fast-pulse');
                     });
                 }, 1000);
             }
@@ -80,25 +80,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+
     const wrapper = document.getElementById('wrapper');
     const darkModeBtn = document.getElementById('darkModeBtn');
 
     if (!wrapper) return;
 
     function enableDarkMode() {
+        document.documentElement.setAttribute('data-theme', 'dark');
         wrapper.classList.add('dark-mode');
+        localStorage.setItem('darkMode', 'enabled');
+
         if (darkModeBtn) {
             darkModeBtn.innerHTML = '<img src="static/sun.png" alt="Słońce" class="sun">';
         }
-        localStorage.setItem('darkMode', 'enabled');
     }
 
     function disableDarkMode() {
+        document.documentElement.setAttribute('data-theme', 'light');
         wrapper.classList.remove('dark-mode');
-        if (darkModeBtn) {
-            darkModeBtn.innerHTML = '<img src="static/moon.png" alt="Księżyc" class="moon" >';
-        }
         localStorage.setItem('darkMode', 'disabled');
+
+        if (darkModeBtn) {
+            darkModeBtn.innerHTML = '<img src="static/moon.png" alt="Księżyc" class="moon">';
+        }
     }
 
     if (localStorage.getItem('darkMode') === 'enabled') {
