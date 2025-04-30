@@ -3,6 +3,13 @@
 <html lang="pl">
 
 <head>
+<script>
+    try {
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  </script>
     <meta charset="UTF-8">
     <title>TopLinker - dodaj link</title>
 
@@ -79,7 +86,7 @@
         </div>
     </main>
 
-    <footer>
+    <footer id="footer">
         <div id="inner-footer">
             <div id="ppl">
                 <a class="git-link btn b" href="https://github.com/bAleksiejczuk" target="_blank" rel="noopener noreferrer">
