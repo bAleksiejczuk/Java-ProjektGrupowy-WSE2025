@@ -28,30 +28,30 @@
             <div id="left-side-nav">
                 <a href="index.jsp"><img src="images/linksIcon.png" alt="Logo aplikacji" id="logo"></a>
                 <% if(session.getAttribute("user") != null) { %>
-                    <h2 id="welcome">Cześć, <a href="my_profile.jsp" id="username"><span id="linkers-name">${user.login}</span><!--Niech wstawia session name/login--></a><span class="i s12 y"> !</span></h2>
+                <h2 id="welcome">Cześć, <a href="my_profile.jsp" id="username"><span id="linkers-name">${user.login}</span><!--Niech wstawia session name/login--></a><span class="i s12 y"> !</span></h2>
                 <% } %>
             </div>
             <div id="buttons">
-                  <a href="index.jsp">Strona Główna</a>
-                  <a href="leadboard.jsp">Ranking</a>
+                <a class="btn b" href="index.jsp"><span id="main-btn">Strona Główna</span></a>
+                <a class="btn b" href="leadboard.jsp"><span id="rank-btn">Ranking</span></a>
 
-                  <% if(session.getAttribute("user") != null) { %>
-                  <a href="my_links.jsp">Moje Linki</a>
-                  <a href="add_link.jsp">Dodaj Link</a>
-                  <% } else { %>
-                  <a href="login.jsp">Logowanie/Rejestracja</a>
-                  <% } %>
+                <% if(session.getAttribute("user") != null) { %>
+                <a class="btn b" href="my_links.jsp"><span id="my-links-btn">Moje Linki</span></a>
+                <a class="btn b" href="add_link.jsp"><span id="add-link-btn">Dodaj Link</span></a>
+                <% } else { %>
+                <a class="btn b" href="login.jsp"><span id="login-btn">Logowanie</span></a>
+                <% } %>
             </div>
             <div id="right-side-nav">
                 <div id="darkModeBtn" >
                     <img src="static/moon.png" alt="Księżyc" class="moon">
                 </div>
-                    <% if(session.getAttribute("user") != null) { %>
-                      <a href="my_profile.jsp"><img src="images/myselficon.png" alt="Mój profil" id="myself"></a>
-                      <form action="logout">
-                        <input type="submit" value="Wyloguj">
-                      </form>
-                    <% } %>
+                <% if(session.getAttribute("user") != null) { %>
+                <a href="my_profile.jsp"><img src="images/myselficon.png" alt="Mój profil" id="myself"></a>
+                <form id="logout-form" action="logout">
+                    <input class="b" type="submit" value="Wyloguj">
+                </form>
+                <% } %>
             </div>
         </div>
     </nav>
@@ -60,12 +60,14 @@
             <header>Logowanie do <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker</span></a> !</header>
             <div id="content">
                 <div id="login-container">
-                        <form action="login">
-                            <h1>Podaj login</h1>
-                            <input type="text" id="login" name="login"><br>
-                            <h1>Podaj hasło</h1>
-                            <input type="password" id="password" name="password"><br>
-                            <input type="submit" value="Zaloguj">
+                        <form action="login" id="login-form">
+                            <div class="form-group">
+                                <input name="login" id="login" autocomplete="off" type="text" class="login-input" placeholder="Login" required>
+                            </div>
+                            <div class="form-group">
+                                <input autocomplete="off" id="password" type="password" class="login-input" name="password" placeholder="Hasło" required>
+                            </div>
+                            <button type="submit" class="btn-1 center-row">Zaloguj</button>
                         </form>
                         <% if (request.getAttribute("error") != null) { %>
                             <p style="color:red;"><%= request.getAttribute("error") %></p>
