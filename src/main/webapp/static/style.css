@@ -138,8 +138,8 @@
   }
   
   .sun, .moon {
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
     cursor: pointer;
     transition: all 1s ease;
     animation: spin 60s linear infinite;
@@ -185,7 +185,7 @@
     display: flex;
     background: dodgerblue;
     color: white;
-    height: 120px;
+    height: 100px;
     width: 100%;
     text-align: center;
     position: fixed;
@@ -209,7 +209,7 @@
   #right-side-nav {
     display: flex;
     align-items: center;
-    gap: 1em;
+    gap: 8px;
   }
   
   #left-side-nav {
@@ -228,38 +228,72 @@
   
   #buttons {
     display: flex;
-    gap: 0.5em;
+    gap: 40px;
     align-items: center;
   }
   
-  .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 40px;
-    font-size: 0.8em;
-    font-weight: bold;
-    background: white;
-    border: 3px solid #0075c8;
-    padding: 8px 40px;
-    transition: background-color 1s ease, background-position 1s ease, box-shadow 1s ease;
-    text-decoration: none;
-    color: white;
-    background-image: linear-gradient(to right, #0075c8 0%, #6de4ff  51%, #0075c8  100%);
-    background-size: 200% auto;  
-    height: 50px;
-    width: 80px; 
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  .btn:hover {
-    background-color: rgb(0, 191, 255, 1);
-    color: white;
-    border-right: 3px solid white;
-    border-left: 3px solid white;
-    background-position: right center;
-  }
-  
+
+.btn{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:30px;
+    width:120px;
+    padding:8px 40px;
+    border-radius:40px;
+
+
+    font-size:0.8em;
+    font-weight:bold;
+    text-decoration:none;
+    letter-spacing:0.5px;
+    color:#ffffff;
+
+
+    border:2px solid #ffffff;
+
+
+    background-image:linear-gradient(
+        135deg,
+        #1e90ff   0%,
+        #3fa4ff  25%,
+        #ffffff  50%,
+        #3fa4ff  75%,
+        #1e90ff 100%
+    );
+    background-size:400% 400%;
+
+
+    box-shadow:
+        0 0 0 2px rgba(255,255,255,0.75) inset,
+        0 4px 14px rgba(0,0,0,0.25);
+
+
+    transition:
+        background-position .6s ease,
+        box-shadow           .4s ease,
+        transform            .4s ease;
+}
+
+
+.btn:hover,
+.btn:focus{
+    background-position:100% 0;
+    transform:translateY(-2px);
+    box-shadow:
+        0 0 0 2px rgba(30,144,255,0.8) inset,
+        0 6px 20px rgba(0,0,0,0.35);
+}
+
+
+.btn:active{
+    transform:translateY(0);
+    box-shadow:
+        0 0 0 2px rgba(30,144,255,0.9) inset,
+        0 2px 10px rgba(0,0,0,0.25);
+}
+
   #main-btn,
   #rank-btn,
   #my-links-btn,
@@ -268,31 +302,13 @@
     transition: all 1s ease;
   }
   
-  .btn:hover #main-btn {
-    color: rgb(0, 30, 255);
-  }
-  
-  .btn:hover #rank-btn {
-    color: rgb(0, 255, 221);
-  }
-  
-  .btn:hover #my-links-btn {
-    color: rgb(132, 255, 0);
-  }
-  
-  .btn:hover #add-link-btn {
-    color: rgb(251, 255, 0);
-  }
-  
-  .btn:hover #login-btn {
-    color: rgb(255, 145, 0);
-  }
+
   
   #logout-form {
     padding-left: 0.5em;
   }
   
-  #logout-form input {
+#logout-form input {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -301,14 +317,14 @@
     border: none;
     cursor: pointer;
     border: 3px solid #dd0000;
-    padding: 8px 40px;
+    /* padding: 8px 40px; */
     text-align: center;
-    transition: all 1s ease;
-    height: 72px;
+    transition: all 1sease;
+    height: 30px;
     background-size: 200% auto;
-    color: black;            
-    background-image: linear-gradient(to right, #dd0000 0%, #ffa4a4  51%, #dd0000  100%)
-  }
+    color: black;
+    background-image: linear-gradient(to right, #dd0000 0%, #ffa4a4 51%, #dd0000 100%);
+}
   
   #logout-form input:hover {
     color: white;
@@ -332,7 +348,7 @@
   }
   
   #logo {
-    height: 80px;
+    height: 60px;
     transform: rotate(0deg) scale(1);
     transition: all 1s ease;
     border-radius: 50%;
@@ -349,7 +365,7 @@
   }
   
   #myself {
-    height: 80px;
+    height: 60px;
     transform: rotate(0deg) scale(1);
     transition: all 1s ease;
     border-radius: 50%;
@@ -440,7 +456,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px;
+    padding: 5px 50px;
     background-color: #99caff;
     transition: all 1s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -485,7 +501,7 @@
   }
   
   .spinner {
-    height: 48px;
+    height: 30px;
     animation: pulse 2s linear infinite;
     animation-play-state: paused;
     transition: transform 0.3s ease;
@@ -768,7 +784,6 @@
   #footer {
     background-color: dodgerblue;
     color: white;
-    padding: 20px;
     text-align: center;
     transition: background-color 1s ease, color 1s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -793,18 +808,22 @@
   
   .name, #ba, #mk, #jh {
     transition: all 1s ease;
+    margin: 10px;
   }
   
-  .git-link {
-    display: flex;
-    flex-direction: column;
+.git-link {
+    /* display: flex
+; */
+    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 16px 20px;
-    color: white;
-    width: 200px;
-  }
+    /* padding: 16px 20px; */
+    /* color: white; */
+    width: 150px;
+    /* height: 30px; */
+    margin: 10px;
+}
   
   .name {
     font-weight: bold;
@@ -818,9 +837,7 @@
     transition: all 1s ease;
   }
   
-  .git-link:hover .gh {
-    color: #ffffff;
-  }
+
   
   .hub {
     transition: all 1s ease;
@@ -829,25 +846,7 @@
     font-size: 1em;
   }
   
-  .git-link:hover .hub {
-    color: rgb(255, 242, 0);
-  }
-  
-  .git-link:hover .name {
-    color: rgb(132, 255, 0);
-  }
-  
-  .git-link:hover #ba {
-    color: rgb(255, 191, 0);
-  }
-  
-  .git-link:hover #mk {
-    color: rgb(246, 255, 0);
-  }
-  
-  .git-link:hover #jh {
-    color: rgb(132, 255, 0);
-  }
+
   
   #java-project {
     font-weight: bold;
