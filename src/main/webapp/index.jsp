@@ -62,7 +62,6 @@
         <div class="search-container">
           <img src="images/spinner.png" alt="spinner" class="spinner">
           <input type="text" placeholder="Wyszukaj..." class="search-input" />
-          <img src="images/spinner.png" alt="spinner" class="spinner">
         </div>
       </div>
     </div>
@@ -71,23 +70,26 @@
   <footer id="footer">
     <div id="inner-footer">
       <div id="ppl">
+
         <a class="git-link btn b" href="https://github.com/bAleksiejczuk" target="_blank" rel="noopener noreferrer">
+        <img src="images/github.png" alt="github"
+             width="40" height="40">
           <span class="name" id="ba">Brunon Aleksiejczuk</span>
-          <span class="gh">Git<span class="hub">Hub</span></span>
         </a>
+
         <a class="git-link btn b" href="https://github.com/malkul25" target="_blank" rel="noopener noreferrer">
+                <img src="images/github.png" alt="github"
+                     width="40" height="40">
           <span class="name" id="mk">Małgorzata Kulik</span>
-          <span class="gh">Git<span class="hub">Hub</span></span>
         </a>
+
         <a class="git-link btn b" href="https://github.com/Kubbix12" target="_blank" rel="noopener noreferrer">
+                <img src="images/github.png" alt="github"
+                     width="40" height="40">
           <span class="name" id="jh">Jakub Hryniewicki</span>
-          <span class="gh">Git<span class="hub">Hub</span></span>
         </a>
       </div>
-      <div id="java-project">
-        <a class="repository" href="https://github.com/bAleksiejczuk/Java-ProjektGrupowyWSE2025" target="_blank" rel="noopener noreferrer"><span>Java-ProjektGrupowyWSE2025</span></a>
-      </div>
-      <span id="copyright">Copyright &copy; 2025</span>
+      <span id="copyright"><a class="repository" href="https://github.com/bAleksiejczuk/Java-ProjektGrupowyWSE2025" target="_blank" rel="noopener noreferrer"><span>Java-ProjektGrupowyWSE2025</span></a></span>
     </div>
   </footer>
 </div>
