@@ -64,19 +64,42 @@
                         <div id="main-panel">
                             <form action="add-link" method="POST" id="add-link-form">
                                 <label for="url">Wprowadź adres URL:</label>
-                                <input autocomplete="off" type="text" id="url" name="url" class="link-input login-input" placeholder="https://www.example.com" required>
+                                <input autocomplete="off" type="url" id="url" name="url" class="link-input login-input" placeholder="https://www.example.com" required>
 
                                 <label for="link_name">Nazwa linku:</label>
                                 <input autocomplete="off" type="text" id="link_name" name="link_name" class="link-input login-input" placeholder="Wprowadź tytuł linku" required>
 
+                                <!-- Lista rozwijana dla kategorii -->
+                                <label for="category">Kategoria:</label>
+                                <select id="category" name="category" class="link-input login-input" required>
+                                    <option value="" disabled selected>Wybierz kategorię</option>
+                                    <option value="Edukacja">Edukacja</option>
+                                    <option value="Rozrywka">Rozrywka</option>
+                                    <option value="Hobby">Hobby</option>
+                                    <option value="Zakupy">Zakupy</option>
+                                    <option value="Zdrowie">Zdrowie</option>
+                                    <option value="Kulinarny">Kulinarny</option>
+                                    <option value="Technologia">Technologia</option>
+                                    <option value="Podróże">Podróże</option>
+                                    <option value="Social Media">Social Media</option>
+                                    <option value="Do przeczytania później">Do przeczytania później</option>
+                                    <option value="Muzyka">Muzyka</option>
+                                    <option value="Sztuka i kultura">Sztuka i kultura</option>
+                                    <option value="Motoryzacja">Motoryzacja</option>
+                                    <option value="Inne">Inne</option>
+                                </select>
+
                                 <!-- Checkbox do ustawienia linku jako prywatny -->
-                                <label for="private_link">Ustaw link jako prywatny</label>
-                                <input type="checkbox" id="private_link" name="private_link"><br>
+                                <label><input type="checkbox" id="private_link" name="private_link"> Ustaw link jako prywatny</label><br>
+
 
                                 <div id="add-link-btns">
                                     <button class="add-link-btn btn" type="submit">Zapisz</button>
                                 </div>
                             </form>
+                            <% if (request.getAttribute("success") != null) { %>
+                                <p style="color: green;"><%= request.getAttribute("success") %></p>
+                            <% } %>
                         </div>
                       <% } else { %>
                        <div id="main-panel">
