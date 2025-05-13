@@ -33,7 +33,7 @@
             </div>
             <div id="buttons">
                 <a class="btn b" href="index.jsp"><span id="main-btn">Strona Główna</span></a>
-                <a class="btn b" href="leadboard.jsp"><span id="rank-btn">Ranking</span></a>
+                <a class="btn b" href="leadboard"><span id="rank-btn">Ranking</span></a>
 
                 <% if(session.getAttribute("user") != null) { %>
                 <a class="btn b" href="myLinks"><span id="my-links-btn">Moje Linki</span></a>
