@@ -62,7 +62,25 @@
         <div class="search-container">
           <img src="images/spinner.png" alt="spinner" class="spinner">
           <input type="text" placeholder="Wyszukaj..." class="search-input" />
+          <select id="category-main" name="category" class="login-input" required>
+            <option value="" disabled selected>Wybierz kategorię</option>
+            <option value="Edukacja">Edukacja</option>
+            <option value="Rozrywka">Rozrywka</option>
+            <option value="Hobby">Hobby</option>
+            <option value="Zakupy">Zakupy</option>
+            <option value="Zdrowie">Zdrowie</option>
+            <option value="Kulinarny">Kulinarny</option>
+            <option value="Technologia">Technologia</option>
+            <option value="Podróże">Podróże</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Do przeczytania później">Do przeczytania później</option>
+            <option value="Muzyka">Muzyka</option>
+            <option value="Sztuka i kultura">Sztuka i kultura</option>
+            <option value="Motoryzacja">Motoryzacja</option>
+            <option value="Inne">Inne</option>
+        </select>
         </div>
+        
       </div>
       <div id="links-container">
         <!--Tu będą dodawane linki-->
