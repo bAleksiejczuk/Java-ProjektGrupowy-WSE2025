@@ -91,19 +91,19 @@
       <div id="ppl">
 
         <a class="git-link btn b" href="https://github.com/bAleksiejczuk" target="_blank" rel="noopener noreferrer">
-        <img src="images/github.png" alt="github"
+        <img class="github" src="images/github.png" alt="github"
              width="40" height="40">
           <span class="name" id="ba">Brunon Aleksiejczuk</span>
         </a>
 
         <a class="git-link btn b" href="https://github.com/malkul25" target="_blank" rel="noopener noreferrer">
-                <img src="images/github.png" alt="github"
+                <img class="github" src="images/github.png" alt="github"
                      width="40" height="40">
           <span class="name" id="mk">Małgorzata Kulik</span>
         </a>
 
         <a class="git-link btn b" href="https://github.com/Kubbix12" target="_blank" rel="noopener noreferrer">
-                <img src="images/github.png" alt="github"
+                <img class="github" src="images/github.png" alt="github"
                      width="40" height="40">
           <span class="name" id="jh">Jakub Hryniewicki</span>
         </a>
