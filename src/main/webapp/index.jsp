@@ -57,7 +57,7 @@
     </nav>
   <main>
     <div id="inner-main">
-      <header>Witaj w <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker</span></a> !</header>
+      <header>Witaj w <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker!</span></a></header>
       <div id="content">
         <div class="search-container">
           <img src="images/spinner.png" alt="spinner" class="spinner">
