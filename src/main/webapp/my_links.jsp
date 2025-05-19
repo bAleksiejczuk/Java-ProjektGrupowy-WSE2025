@@ -60,7 +60,7 @@
     <main>
         <div id="inner-main">
             <% if(session.getAttribute("user") != null) { %>
-            <header>Dodane przez Ciebie do <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker</span></a> !</header>
+            <header>Dodane przez Ciebie do <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker!</span></a></header>
             <div id="content">
                 <c:if test="${not empty links}">
                     <ul>
