@@ -57,7 +57,7 @@
     </nav>
     <main>
         <div id="inner-main">
-            <header>Twój profil w <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker</span></a> !</header>
+            <header>Twój profil w <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker!</span></a></header>
             <% if(session.getAttribute("user") != null) { %>
             <div id="content">
                 <form id="edit-form">
