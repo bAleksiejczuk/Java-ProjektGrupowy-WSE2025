@@ -59,11 +59,13 @@
     <div id="inner-main">
       <header>Witaj w <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker!</span></a></header>
       <div id="content">
-        <div class="search-container">
+        <form action="search" method="get" class="search-container">
           <img src="images/spinner.png" alt="spinner" class="spinner">
-          <input type="text" placeholder="Wyszukaj..." class="search-input" />
-          <select id="category-main" name="category" class="login-input" required>
-            <option value="" disabled selected>Wybierz kategorię</option>
+
+          <input type="text" name="query" placeholder="Wyszukaj..." class="search-input" />
+
+          <select id="category-main" name="category" class="login-input">
+            <option value="" selected>Wszystkie</option>
             <option value="Edukacja">Edukacja</option>
             <option value="Rozrywka">Rozrywka</option>
             <option value="Hobby">Hobby</option>
@@ -78,41 +80,15 @@
             <option value="Sztuka i kultura">Sztuka i kultura</option>
             <option value="Motoryzacja">Motoryzacja</option>
             <option value="Inne">Inne</option>
-        </select>
-        </div>
-        
+          </select>
+
+          <button type="submit" class="btn b">Szukaj</button>
+        </form>
+
       </div>
       <div id="links-container">
-          <c:choose>
-              <c:when test="${not empty links}">
-                  <c:forEach var="link" items="${links}" varStatus="status">
-                    <div class="link-container-main">
-                      <a href="${link.url}" class="link4" target="_blank" rel="noopener noreferrer" title="${link.description}">
-                        <span class="link-main">
-                          <span class="rank-main">${status.index + 1}. </span>
-                          <span class="title-link">${link.name}</span>
-                          <span class="added-link">${link.url}</span>
-                        </span>
-
-                        <span class="likes">
-                          <span class="likes-container">
-                            <span class="like-count">${link.likes}</span>
-                            <img class="like" src="images/like.png" alt="Polubień" title="Polub">
-
-                          </span>
-
-                          <span class="added-time">${link.addedTime}</span><%--Godzina--%>
-                          <span class="added-time">${link.addedTime}</span><%--Niech pobierze datę--%>
-                        </span>
-                      </a>
-                    </div>
-                  </c:forEach>
-              </c:when>
-              <c:otherwise>
-                  <div class="no-links">Brak dostępnych linków do wyświetlenia.</div>
-              </c:otherwise>
-          </c:choose>
-        </div>
+        <!--Tu będą dodawane linki-->
+      </div>
     </div>
   </main>
 
