@@ -81,6 +81,9 @@
                                     </c:when>
                                   </c:choose>
                               <span class="link">
+                                <c:if test="${link.isPrivate}">
+                                    <img class="lock" src="images/lock.png" alt="Prywatny" >
+                                </c:if>
                                 <span class="rank">${status.index + 1}. </span>
                                 <span class="title-link">${link.name}</span>
                                 <span class="added-link">${link.url}</span>
@@ -89,20 +92,11 @@
                               <span class="likes">
                                 <span class="likes-container">
                                   <span class="like-count">${link.likes}</span>
-                                  <img class="like" src="images/like.png" alt="Polubień" title="Polub">
-
-                                  <%-- Tutaj sprawdzenie czy jest prywatny
-                                  <c:if test="${link.private}">
-                                    <img class="lock" src="images/lock.png" alt="Prywatny" title="Ten link jest prywatny">
-                                  </c:if>
-                                  --%>
-
-                                    <img class="like" src="images/cross.png" alt="Usuń" title="Usuń">
-
+                                  <img class="like" src="images/like.png" alt="Polubień" ">
+                                    <img class="like" src="images/cross.png" alt="Usuń" >
                                 </span>
-
-                                <span class="added-time">${link.addedTime}</span><%--Godzina--%>
-                                <span class="added-time">${link.addedTime}</span><%--Niech pobierze datę--%>
+                                <span class="added-time">${link.addedTime}</span>
+                                <span class="added-time">${link.addedAt}</span>
                               </span>
                             </a>
                           </div>
