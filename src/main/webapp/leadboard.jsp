@@ -59,7 +59,7 @@
 
     <main>
         <div id="inner-main">
-            <header>Ranking <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker</span></a> !</header>
+            <header>Ranking <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker!</span></a></header>
             <div id="desc">Poniżej ranking wszystkich linków zamieszczonych w aplikacji!</div>
 
             <div id="links-container">
