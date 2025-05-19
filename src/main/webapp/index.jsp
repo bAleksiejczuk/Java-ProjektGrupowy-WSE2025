@@ -83,8 +83,36 @@
         
       </div>
       <div id="links-container">
-        <!--Tu będą dodawane linki-->
-      </div>
+          <c:choose>
+              <c:when test="${not empty links}">
+                  <c:forEach var="link" items="${links}" varStatus="status">
+                    <div class="link-container-main">
+                      <a href="${link.url}" class="link4" target="_blank" rel="noopener noreferrer" title="${link.description}">
+                        <span class="link-main">
+                          <span class="rank-main">${status.index + 1}. </span>
+                          <span class="title-link">${link.name}</span>
+                          <span class="added-link">${link.url}</span>
+                        </span>
+
+                        <span class="likes">
+                          <span class="likes-container">
+                            <span class="like-count">${link.likes}</span>
+                            <img class="like" src="images/like.png" alt="Polubień" title="Polub">
+
+                          </span>
+
+                          <span class="added-time">${link.addedTime}</span><%--Godzina--%>
+                          <span class="added-time">${link.addedTime}</span><%--Niech pobierze datę--%>
+                        </span>
+                      </a>
+                    </div>
+                  </c:forEach>
+              </c:when>
+              <c:otherwise>
+                  <div class="no-links">Brak dostępnych linków do wyświetlenia.</div>
+              </c:otherwise>
+          </c:choose>
+        </div>
     </div>
   </main>
 
