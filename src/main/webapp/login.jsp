@@ -57,7 +57,7 @@
     </nav>
     <main>
         <div id="inner-main">
-            <header>Logowanie do <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker</span></a> !</header>
+            <header>Logowanie do <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker!</span></a></header>
             <div id="content">
                 <div id="login-container">
                         <form action="login" id="login-form">
