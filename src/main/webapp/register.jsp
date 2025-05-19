@@ -57,7 +57,7 @@
     </nav>
     <main>
         <div id="inner-main">
-            <header>Rejestracja do <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker</span></a> !</header>
+            <header>Rejestracja do <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker!</span></a></header>
             <div id="content">
               <div id="inner-content">
                 <% if(session.getAttribute("user") != null) { %>
