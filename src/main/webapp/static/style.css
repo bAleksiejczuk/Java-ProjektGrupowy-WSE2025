@@ -507,9 +507,13 @@
   
   #links-container {
     border-radius: 30px;
-    width: 1200px;
+    width: 1300px;
     padding: 30px 125px 30px 30px;
-    transition: all 1s ease;
+
+  }
+
+  #links-container .no-links {
+    margin-left: 85px;
   }
   
   #links-container .link-container:nth-child(1):hover a {
@@ -605,6 +609,54 @@
   .link-container:nth-child(3) .link {
     font-size: 1.4em;
   }
+
+  .link-container-main .link-main {
+      font-size: 1.2em;
+    }
+
+  .link-container-main {
+   width: 90%;
+   text-align: left;
+   margin: 0 auto;
+   transition: all 1s ease;
+ }
+
+ .link-container-main:first-child a {
+     border-top-left-radius: 30px;
+     border-top-right-radius: 30px;
+   }
+
+   .link-container-main:last-child a {
+     border-bottom-left-radius: 30px;
+     border-bottom-right-radius: 30px;
+   }
+
+ .link-container-main:hover {
+   width: 105%;
+   transform: translateX(-2.25%);
+ }
+
+ .link-container-main:hover a {
+     border-bottom: 5px solid rgb(255, 255, 255);
+   }
+
+    .link-container-main a {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+  .rank-main {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  .link-main {
+    gap: 10px;
+     margin-left: 30px;
+     font-size: 1.1em;
+     display: block;
+  }
   
   .link {
     gap: 10px;
@@ -684,7 +736,7 @@
     align-items: center;
     width: 100%;
   }
-  
+
   #medal1, #medal2, #medal3 {
     height: 80px;
   }
@@ -709,7 +761,13 @@
     width: 50px;
     height: 50px;
     margin-left: 10px;
+    transition: all 0.4s ease;
   }
+
+  .like:hover {
+      scale: 1.1;
+      margin-left: 10px;
+    }
   
   
   @keyframes medal1Pulse {
@@ -741,8 +799,8 @@
   
   #my-links-list {
     border-radius: 30px;
-    padding: 30px 75px 30px 30px;
-    width: 1200px;
+    padding: 30px 170px 30px 30px;
+    width: 1350px;
   }
   
   #my-link-section {
@@ -751,8 +809,13 @@
   }
   
   .lock {
-    width: 30px;
+    width: 35px;
     margin-left: 10px;
+    transition: all 0.4s ease;
+  }
+
+  .lock:hover {
+    scale: 1.1;
   }
 
   /*Footer poniżej*/
