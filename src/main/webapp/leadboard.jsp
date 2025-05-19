@@ -35,9 +35,9 @@
             </div>
             <div id="buttons">
                 <a class="btn b" href="index.jsp"><span id="main-btn">Strona Główna</span></a>
-                <a class="btn b" href="leadboard.jsp"><span id="rank-btn">Ranking</span></a>
+                <a class="btn b" href="leadboard"><span id="rank-btn">Ranking</span></a>
                 <% if(session.getAttribute("user") != null) { %>
-                <a class="btn b" href="my_links.jsp"><span id="my-links-btn">Moje Linki</span></a>
+                <a class="btn b" href="myLinks"><span id="my-links-btn">Moje Linki</span></a>
                 <a class="btn b" href="add_link.jsp"><span id="add-link-btn">Dodaj Link</span></a>
                 <% } else { %>
                 <a class="btn b" href="login.jsp"><span id="login-btn">Logowanie</span></a>
@@ -65,22 +65,39 @@
             <div id="links-container">
                 <c:choose>
                     <c:when test="${not empty links}">
-                        <c:forEach var="link" items="${links}">
-                            <div class="link-card">
-                                <div class="link-name">
-                                    <c:out value="${link.name != null ? link.name : 'Bez tytułu'}"/>
-                                </div>
-                                <div class="link-url">
-                                    <a href="${link.url}" target="_blank">${link.url}</a>
-                                </div>
-                                <div class="link-user">
-                                    Dodane przez: <c:out value="${link.user != null ? link.user : 'Nieznany'}"/>
-                                </div>
-                                <div class="link-likes">
-                                    Polubienia: <c:out value="${link.likes != null ? link.likes : '?'}"/>
-                                </div>
-                            </div>
-                        </c:forEach>
+                        <c:forEach var="link" items="${links}" varStatus="status">
+                              <div class="link-container">
+                                <a href="${link.url}" class="link${status.index + 1 > 4 ? 4 : status.index + 1}" target="_blank" rel="noopener noreferrer" title="${link.description}">
+                                <c:choose>
+                                        <c:when test="${status.index == 0}">
+                                          <img src="images/top1.png" alt="Top1" id="medal1" title="Złoto!" />
+                                        </c:when>
+                                        <c:when test="${status.index == 1}">
+                                          <img src="images/top2.png" alt="Top2" id="medal1" title="Srebro!" />
+                                        </c:when>
+                                        <c:when test="${status.index == 2}">
+                                          <img src="images/top3.png" alt="Top3" id="medal1" title="Brąz!" />
+                                        </c:when>
+                                      </c:choose>
+                                  <span class="link">
+                                    <span class="rank">${status.index + 1}. </span>
+                                    <span class="title-link">${link.name}</span>
+                                    <span class="added-link">${link.url}</span>
+                                  </span>
+
+                                  <span class="likes">
+                                    <span class="likes-container">
+                                      <span class="like-count">${link.likes}</span>
+                                      <img class="like" src="images/like.png" alt="Polubień" title="Polub">
+
+                                    </span>
+
+                                    <span class="added-time">${link.addedTime}</span><%--Godzina--%>
+                                    <span class="added-time">${link.addedTime}</span><%--Niech pobierze datę--%>
+                                  </span>
+                                </a>
+                              </div>
+                            </c:forEach>
                     </c:when>
                     <c:otherwise>
                         <div class="no-links">Brak dostępnych linków do wyświetlenia.</div>
