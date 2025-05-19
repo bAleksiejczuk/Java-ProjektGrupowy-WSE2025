@@ -93,7 +93,7 @@
                                     </span>
 
                                     <span class="added-time">${link.addedTime}</span><%--Godzina--%>
-                                    <span class="added-time">${link.addedTime}</span><%--Niech pobierze datę--%>
+                                    <span class="added-time">${link.addedAt}</span><%--Niech pobierze datę--%>
                                   </span>
                                 </a>
                               </div>
