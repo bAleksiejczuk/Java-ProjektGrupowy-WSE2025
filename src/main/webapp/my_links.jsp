@@ -67,23 +67,12 @@
                 <c:if test="${not empty links}">
                     <ul>
                         <c:forEach var="link" items="${links}" varStatus="status">
-                          <div class="link-container">
-                            <a href="${link.url}" class="link${status.index + 1 > 4 ? 4 : status.index + 1}" target="_blank" rel="noopener noreferrer" title="${link.description}">
-                            <c:choose>
-                                    <c:when test="${status.index == 0}">
-                                      <img src="images/top1.png" alt="Top1" id="medal1" title="Złoto!" />
-                                    </c:when>
-                                    <c:when test="${status.index == 1}">
-                                      <img src="images/top2.png" alt="Top2" id="medal1" title="Srebro!" />
-                                    </c:when>
-                                    <c:when test="${status.index == 2}">
-                                      <img src="images/top3.png" alt="Top3" id="medal1" title="Brąz!" />
-                                    </c:when>
-                                  </c:choose>
+                          <div class="link-container-ml">
+                            <a href="${link.url}" class="link4" target="_blank" rel="noopener noreferrer" title="${link.description}">
+                            <c:if test="${link.isPrivate}">
+                                <img class="lock" src="images/lock.png" alt="Prywatny" >
+                            </c:if>
                               <span class="link">
-                                <c:if test="${link.isPrivate}">
-                                    <img class="lock" src="images/lock.png" alt="Prywatny" >
-                                </c:if>
                                 <span class="rank">${status.index + 1}. </span>
                                 <span class="title-link">${link.name}</span>
                                 <span class="added-link">${link.url}</span>
@@ -93,7 +82,7 @@
                                 <span class="likes-container">
                                   <span class="like-count">${link.likes}</span>
                                   <img class="like" src="images/like.png" alt="Polubień" ">
-                                    <img class="like" src="images/cross.png" alt="Usuń" >
+                                    <img class="cross" src="images/cross.png" alt="Usuń" >
                                 </span>
                                 <span class="added-time">${link.addedTime}</span>
                                 <span class="added-time">${link.addedAt}</span>
@@ -106,7 +95,7 @@
                 </c:if>
 
                 <c:if test="${empty links}">
-                    <p>Brak linków do wyświetlenia.</p>
+                    <p class="no-link">Brak linków do wyświetlenia.</p>
                 </c:if>
             <% } else { %>
                 <div id="main-panel">
