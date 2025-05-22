@@ -71,7 +71,7 @@
 
                                 <!-- Lista rozwijana dla kategorii -->
                                 <label for="category">Kategoria:</label>
-                                <select id="category" name="category" class="link-input login-input" required>
+                                <select id="category" name="category" class="link-input search2-input" required>
                                     <option value="" disabled selected>Wybierz kategorię</option>
                                     <option value="Edukacja">Edukacja</option>
                                     <option value="Rozrywka">Rozrywka</option>
