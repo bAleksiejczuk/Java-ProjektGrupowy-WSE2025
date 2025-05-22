@@ -88,7 +88,7 @@
                                   <span class="likes">
                                     <span class="likes-container">
                                       <span class="like-count">${link.likes}</span>
-                                      <img class="like" src="images/like.png" alt="Polubień" title="Polub">
+                                      <img class="like" src="images/like.png" alt="Polubień">
 
                                     </span>
 
