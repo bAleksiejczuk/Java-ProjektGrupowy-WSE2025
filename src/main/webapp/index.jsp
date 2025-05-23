@@ -64,7 +64,7 @@
 
           <input type="text" name="query" placeholder="Wyszukaj..." class="search-input" />
 
-          <select id="category-main" name="category" class="login-input">
+          <select id="category-main" name="category" class="search-input">
             <option value="" selected>Wszystkie</option>
             <option value="Edukacja">Edukacja</option>
             <option value="Rozrywka">Rozrywka</option>
@@ -82,7 +82,7 @@
             <option value="Inne">Inne</option>
           </select>
 
-          <button type="submit" class="btn b">Szukaj</button>
+          <button type="submit" class="btn-3">Szukaj</button>
         </form>
 
       </div>
