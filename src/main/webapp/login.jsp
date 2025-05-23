@@ -15,7 +15,7 @@
 
     <meta name="description" content="Java-ProjektGrupowyWSE2025">
     <meta name="authors" content="Brunon Aleksiejczuk, Jakub Hryniewicki, Małgorzata Kulik">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/style.css">
     <link rel="icon" type="image/png" href="images/linksIcon.png" sizes="48x48">
     <script src="static/script.js" defer></script>
