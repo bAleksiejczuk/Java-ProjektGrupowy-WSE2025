@@ -15,7 +15,7 @@
 
   <meta name="description" content="Java-ProjektGrupowyWSE2025">
   <meta name="authors" content="Brunon Aleksiejczuk, Jakub Hryniewicki, Małgorzata Kulik">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="static/style.css">
   <link rel="icon" type="image/png" href="images/linksIcon.png" sizes="48x48">
   <script src="static/script.js" defer></script>
@@ -33,10 +33,10 @@
             </div>
             <div id="buttons">
                 <a class="btn b" href="index.jsp"><span id="main-btn">Strona Główna</span></a>
-                <a class="btn b" href="leadboard.jsp"><span id="rank-btn">Ranking</span></a>
+                <a class="btn b" href="leadboard"><span id="rank-btn">Ranking</span></a>
 
                 <% if(session.getAttribute("user") != null) { %>
-                <a class="btn b" href="my_links.jsp"><span id="my-links-btn">Moje Linki</span></a>
+                <a class="btn b" href="myLinks"><span id="my-links-btn">Moje Linki</span></a>
                 <a class="btn b" href="add_link.jsp"><span id="add-link-btn">Dodaj Link</span></a>
                 <% } else { %>
                 <a class="btn b" href="login.jsp"><span id="login-btn">Logowanie</span></a>
@@ -57,13 +57,37 @@
     </nav>
   <main>
     <div id="inner-main">
-      <header>Witaj w <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker</span></a> !</header>
+      <header>Witaj w <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker!</span></a></header>
       <div id="content">
-        <div class="search-container">
+        <form action="search" method="get" class="search-container">
           <img src="images/spinner.png" alt="spinner" class="spinner">
-          <input type="text" placeholder="Wyszukaj..." class="search-input" />
-          <img src="images/spinner.png" alt="spinner" class="spinner">
-        </div>
+
+          <input type="text" name="query" placeholder="Wyszukaj..." class="search-input" />
+
+          <select id="category-main" name="category" class="search-input">
+            <option value="" selected>Wszystkie</option>
+            <option value="Edukacja">Edukacja</option>
+            <option value="Rozrywka">Rozrywka</option>
+            <option value="Hobby">Hobby</option>
+            <option value="Zakupy">Zakupy</option>
+            <option value="Zdrowie">Zdrowie</option>
+            <option value="Kulinarny">Kulinarny</option>
+            <option value="Technologia">Technologia</option>
+            <option value="Podróże">Podróże</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Do przeczytania później">Do przeczytania później</option>
+            <option value="Muzyka">Muzyka</option>
+            <option value="Sztuka i kultura">Sztuka i kultura</option>
+            <option value="Motoryzacja">Motoryzacja</option>
+            <option value="Inne">Inne</option>
+          </select>
+
+          <button type="submit" class="btn-3">Szukaj</button>
+        </form>
+
+      </div>
+      <div id="links-container">
+        <!--Tu będą dodawane linki-->
       </div>
     </div>
   </main>
@@ -71,23 +95,26 @@
   <footer id="footer">
     <div id="inner-footer">
       <div id="ppl">
+
         <a class="git-link btn b" href="https://github.com/bAleksiejczuk" target="_blank" rel="noopener noreferrer">
+        <img class="github" src="images/github.png" alt="github"
+             width="40" height="40">
           <span class="name" id="ba">Brunon Aleksiejczuk</span>
-          <span class="gh">Git<span class="hub">Hub</span></span>
         </a>
+
         <a class="git-link btn b" href="https://github.com/malkul25" target="_blank" rel="noopener noreferrer">
+                <img class="github" src="images/github.png" alt="github"
+                     width="40" height="40">
           <span class="name" id="mk">Małgorzata Kulik</span>
-          <span class="gh">Git<span class="hub">Hub</span></span>
         </a>
+
         <a class="git-link btn b" href="https://github.com/Kubbix12" target="_blank" rel="noopener noreferrer">
+                <img class="github" src="images/github.png" alt="github"
+                     width="40" height="40">
           <span class="name" id="jh">Jakub Hryniewicki</span>
-          <span class="gh">Git<span class="hub">Hub</span></span>
         </a>
       </div>
-      <div id="java-project">
-        <a class="repository" href="https://github.com/bAleksiejczuk/Java-ProjektGrupowyWSE2025" target="_blank" rel="noopener noreferrer"><span>Java-ProjektGrupowyWSE2025</span></a>
-      </div>
-      <span id="copyright">Copyright &copy; 2025</span>
+      <span id="copyright"><a class="repository" href="https://github.com/bAleksiejczuk/Java-ProjektGrupowyWSE2025" target="_blank" rel="noopener noreferrer"><span>Java-ProjektGrupowyWSE2025</span></a></span>
     </div>
   </footer>
 </div>
