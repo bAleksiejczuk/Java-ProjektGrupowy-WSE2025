@@ -148,17 +148,3 @@ document.querySelectorAll('.cross').forEach(el => {
     }
   });
 });
-document.querySelectorAll('.lock').forEach(el => {
-  el.addEventListener('click', function () {
-    const id = this.dataset.id;
-    const isPrivate = this.dataset.private === "true";
-
-    const newStatus = isPrivate ? "publiczny" : "prywatny";
-    const confirmMsg = `Czy na pewno chcesz zmienić status na ${newStatus}?`;
-
-    if (confirm(confirmMsg)) {
-      // Przykład przekierowania GET (zmień na POST jeśli trzeba)
-      window.location.href = `/zmienStatus?id=${id}&naPrywatny=${!isPrivate}`;
-    }
-  });
-});
