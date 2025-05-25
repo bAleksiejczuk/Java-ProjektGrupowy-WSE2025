@@ -121,3 +121,44 @@ if (darkModeBtn) {
   });
 }
 });
+document.querySelectorAll('.cross').forEach(el => {
+  el.addEventListener('click', function () {
+    const id = this.dataset.id; // np. ID obiektu do usunięcia
+
+    if (confirm("Czy na pewno chcesz usunąć ten link?")) {
+      // Możesz tu wysłać zapytanie do backendu
+      // przykład: przekierowanie (GET):
+      // window.location.href = `/usun?id=${id}`;
+
+      // przykład: fetch (POST):
+      fetch('/usun', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: id })
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("Usunięto!");
+          // np. usuń element z DOM:
+          this.closest('.element').remove();
+        } else {
+          alert("Błąd podczas usuwania.");
+        }
+      });
+    }
+  });
+});
+document.querySelectorAll('.lock').forEach(el => {
+  el.addEventListener('click', function () {
+    const id = this.dataset.id;
+    const isPrivate = this.dataset.private === "true";
+
+    const newStatus = isPrivate ? "publiczny" : "prywatny";
+    const confirmMsg = `Czy na pewno chcesz zmienić status na ${newStatus}?`;
+
+    if (confirm(confirmMsg)) {
+      // Przykład przekierowania GET (zmień na POST jeśli trzeba)
+      window.location.href = `/zmienStatus?id=${id}&naPrywatny=${!isPrivate}`;
+    }
+  });
+});
