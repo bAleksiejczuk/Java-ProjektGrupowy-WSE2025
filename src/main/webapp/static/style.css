@@ -44,9 +44,13 @@
     box-shadow: 0 0 20px #5e5e5e;
   }
 
-   html[data-theme='dark'] .github {
+   html[data-theme='dark'] .github, html[data-theme='dark'] .cross, html[data-theme='dark'] .lock, html[data-theme='dark'] .globe, html[data-theme='dark'] .like-count, html[data-theme='dark'] .rank, html[data-theme='dark'] .title-link, html[data-theme='dark'] .added-time, html[data-theme='dark'] .added-link, html[data-theme='dark'] .search-input::placeholder {
       filter: invert(1);
   }
+
+   html[data-theme='dark'] .search-container #category-main {
+    color: white;
+   }
 
   .github {
     transition: 1s all ease;
@@ -114,12 +118,20 @@
     }
   }
 
-  .sun, .moon {
-    width: 50px;
-    cursor: pointer;
-    transition: all 1s ease;
-    filter: invert(1);
-  }
+
+  .sun {
+      width: 40px;
+          cursor: pointer;
+          transition: all 1s ease;
+          filter: invert(1);
+    }
+
+    .moon {
+        width: 40px;
+            cursor: pointer;
+            transition: all 1s ease;
+            filter: invert(1);
+      }
 
   .fast-spin {
     animation: spin 1s linear infinite;
@@ -214,7 +226,7 @@
     justify-content:center;
     height:30px;
     width:120px;
-    padding:8px 40px;
+    padding:15px 40px;
     border-radius:40px;
     font-size:0.8em;
     font-weight:bold;
@@ -323,6 +335,7 @@
 
   #myself:hover {
     cursor: pointer;
+    scale: 1.1;
   }
 
   /*Main content poniżej*/
@@ -432,7 +445,9 @@
   }
 
   .search-container #category-main {
-    color: white;
+    font-size: 1em;
+    color: black;
+    transition: all 1s ease;
   }
 
   .search-input {
@@ -447,6 +462,12 @@
     font-size: 1em;
     transition: all 1s ease;
   }
+
+  .search-input::placeholder {
+    color: black;
+    transition: all 1s ease;
+  }
+
 
   .search-container:hover .search-input {
     background-color: rgb(85, 170, 255);
@@ -728,15 +749,18 @@
   .title-link {
     font-size: 1em;
     font-weight: bold;
+    transition: all 0.4s ease;
   }
 
   .added-link {
     display: block;
-    color: #ffffff;
+    color: black;
+    transition: all 0.4s ease;
   }
 
   .added-time {
-    color: #ffffff;
+    color: black;
+    transition: all 0.4s ease;
   }
 
   .likes-container {
@@ -779,6 +803,7 @@
   .like-count {
     color: rgb(0, 0, 0);
     font-size: 1.5em;
+    transition: all 0.4s ease;
   }
 
   .link-container a {
@@ -819,6 +844,16 @@
     margin-left: 15px;
     transition: all 0.4s ease;
     margin-bottom: 5px;
+
+  }
+
+  .liked {
+      filter: brightness(150%) contrast(150%);
+      width: 50px;
+      height: 50px;
+      margin-left: 15px;
+      transition: all 0.4s ease;
+      margin-bottom: 5px;
   }
 
    .cross {
@@ -874,13 +909,13 @@
     align-items: center;
   }
 
-  .lock {
-    width: 30px;
+  .lock, .globe {
+    width: 40px;
     margin-left: 10px;
     transition: all 0.4s ease;
   }
 
-  .lock:hover {
+  .lock:hover, .globe:hover {
     scale: 1.1;
   }
 
@@ -907,7 +942,7 @@
   #ppl {
     display: flex;
     flex-wrap: wrap;
-    gap: 2em;
+    gap: 1em;
     margin-left: 1em;
   }
 
@@ -1326,9 +1361,13 @@
     padding:8px 30px;
 }
 
-.sun, .moon {
+.sun {
     width: 40px;
   }
+
+  .moon {
+      width: 30px;
+    }
 
   #logout-form input {
       height:40px;
@@ -1943,6 +1982,7 @@
   .like-count {
     color: rgb(0, 0, 0);
     font-size: 1.5em;
+
   }
 
   .link-container a {
