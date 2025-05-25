@@ -70,8 +70,15 @@
                           <div class="link-container-ml">
                             <a href="${link.url}" class="link4" target="_blank" rel="noopener noreferrer" title="${link.description}">
                             <c:if test="${link.isPrivate}">
-                                <img class="lock" src="images/lock.png" alt="Prywatny" >
+                                <img class="lock" src="images/lock.png" alt="Prywatny"
+                                     data-id="${link.id}" data-private="true">
                             </c:if>
+                            <c:if test="${!link.isPrivate}">
+                                <img class="lock" src="images/globe.png" alt="Publiczny"
+                                     data-id="${link.id}" data-private="false">
+                            </c:if>
+
+
                               <span class="link">
                                 <span class="rank">${status.index + 1}. </span>
                                 <span class="title-link">${link.name}</span>
@@ -81,7 +88,7 @@
                               <span class="likes">
                                 <span class="likes-container">
                                   <span class="like-count">${link.likes}</span>
-                                  <img class="like" src="images/like.png" alt="Polubień" ">
+                                  <img class="like" src="images/like.png" alt="Polubień">
                                     <img class="cross" src="images/cross.png" alt="Usuń" >
                                 </span>
                                 <span class="added-time">${link.addedTime}</span>
