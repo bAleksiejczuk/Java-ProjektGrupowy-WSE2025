@@ -119,43 +119,5 @@
   </footer>
 </div>
 <button id="top-btn">↑</button>
-<%@ page import="java.util.*, com.example.baleksiejczuk.LinkData" %>
-<%
-    List<LinkData> links = (List<LinkData>) session.getAttribute("links");
-
-    if (links != null && !links.isEmpty()) {
-%>
-<h3>Twoje linki:</h3>
-<table border="1">
-    <tr>
-        <th>Nazwa</th>
-        <th>Kategoria</th>
-        <th>Data dodania</th>
-        <th>Godzina</th>
-        <th>Publiczny?</th>
-        <th>Polubienia</th>
-    </tr>
-    <%
-        for (LinkData link : links) {
-    %>
-    <tr>
-        <td><a href="<%= link.getUrl() %>"><%= link.getName() %></a></td>
-        <td><%= link.getCategory() %></td>
-        <td><%= link.getAddedAt() %></td>
-        <td><%= link.getAddedTime() %></td>
-        <td><%= link.isPrivate() ? "Nie" : "Tak" %></td>
-        <td><%= link.getLikes() %></td>
-    </tr>
-    <%
-        }
-    %>
-</table>
-<%
-} else {
-%>
-<p>Brak zapisanych linków.</p>
-<%
-    }
-%>
 </body>
 </html>
