@@ -1,11 +1,8 @@
 package com.example.baleksiejczuk;
 
 import java.io.*;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
@@ -22,24 +19,15 @@ public class AddLink extends HttpServlet {
         boolean isPrivate = privateLink != null;
         String category = request.getParameter("category");
 
-
-//        System.out.println("Adres URL: " + url);
-//        System.out.println("Nazwa Linku: " + linkName);
-//        System.out.println("Czy link jest prywatny: " + isPrivate);
-//        System.out.println("Kategoria: " + category);
-
-
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         String userLogin = (user != null) ? user.getLogin() : "error";
-
 
         if ("error".equals(userLogin)) {
             System.out.println("[ERROR] Dodanie linku przez niezalogowanego użytkownika. Przekierowanie na index.jsp ");
             response.sendRedirect("index.jsp");
             return;
         }
-
 
         Date now = new Date();
         String addedAt = new SimpleDateFormat("yyyy-MM-dd").format(now);
@@ -67,7 +55,6 @@ public class AddLink extends HttpServlet {
         int newNumber = maxNumber + 1;
         File newFile = new File(folder, newNumber + ".json");
 
-
         String json = "{\n" +
                 "  \"url\": \"" + escapeJson(url) + "\",\n" +
                 "  \"name\": \"" + escapeJson(linkName) + "\",\n" +
@@ -83,9 +70,28 @@ public class AddLink extends HttpServlet {
             writer.write(json);
         }
 
+        // 🔽 Zapisanie do sesji użytkownika
+        List<LinkData> sessionLinks = (List<LinkData>) session.getAttribute("links");
+        if (sessionLinks == null) {
+            sessionLinks = new ArrayList<>();
+        }
 
-        String message = "Link \"" + linkName + "\" dodany pomyślnie!";
-        request.setAttribute("success", "Link o nazwie: "+ linkName +" został dodany pomyślnie.");
+
+        LinkData newLink = new LinkData();
+        newLink.setUrl(url);
+        newLink.setName(linkName);
+        newLink.setPrivate(isPrivate);
+        newLink.setUser(userLogin);
+        newLink.setAddedAt(addedAt);
+        newLink.setAddedTime(addedTime);
+        newLink.setCategory(category);
+        newLink.setLikes(0);
+
+        sessionLinks.add(newLink);
+        session.setAttribute("sessionLinks", sessionLinks);
+
+        // 🔽 Przekazanie komunikatu do widoku
+        request.setAttribute("success", "Link o nazwie: " + linkName + " został dodany pomyślnie.");
         request.getRequestDispatcher("add_link.jsp").forward(request, response);
     }
 
