@@ -48,6 +48,18 @@
       filter: invert(1);
   }
 
+html[data-theme='dark'] .link-container:nth-child(1):hover .rank {
+    color: rgb(0, 93, 255);
+  }
+
+ html[data-theme='dark'] .link-container:nth-child(2):hover .rank {
+    color: rgb(128, 128, 128);
+  }
+
+ html[data-theme='dark'] .link-container:nth-child(3):hover .rank {
+    color: rgb(36, 123, 211);
+  }
+
    html[data-theme='dark'] .search-container #category-main {
     color: white;
    }
@@ -624,6 +636,7 @@
   }
 
   .rank {
+  transition: all 0.4s ease;
     font-weight: bold;
     font-size: 1.2em;
   }
