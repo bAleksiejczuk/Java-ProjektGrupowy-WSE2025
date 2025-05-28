@@ -36,7 +36,7 @@
                 <a class="btn b" href="leadboard"><span id="rank-btn">Ranking</span></a>
 
                 <% if(session.getAttribute("user") != null) { %>
-                <a class="btn b" href="myLinks"><span id="my-links-btn">Moje Linki</span></a>
+                <a class="btn b" href="my_links.jsp"><span id="my-links-btn">Moje Linki</span></a>
                 <a class="btn b" href="add_link.jsp"><span id="add-link-btn">Dodaj Link</span></a>
                 <% } else { %>
                 <a class="btn b" href="login.jsp"><span id="login-btn">Logowanie</span></a>
