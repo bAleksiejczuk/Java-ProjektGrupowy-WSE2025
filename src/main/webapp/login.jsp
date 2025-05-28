@@ -36,7 +36,7 @@
                 <a class="btn b" href="leadboard"><span id="rank-btn">Ranking</span></a>
 
                 <% if(session.getAttribute("user") != null) { %>
-                <a class="btn b" href="myLinks"><span id="my-links-btn">Moje Linki</span></a>
+                <a class="btn b" href="my_links.jsp"><span id="my-links-btn">Moje Linki</span></a>
                 <a class="btn b" href="add_link.jsp"><span id="add-link-btn">Dodaj Link</span></a>
                 <% } else { %>
                 <a class="btn b" href="login.jsp"><span id="login-btn">Logowanie</span></a>
@@ -58,27 +58,30 @@
     <main>
         <div id="inner-main">
             <header>Logowanie do <a id="top-linker" href="index.jsp"><span id="top">Top</span><span id="linker">Linker!</span></a></header>
-            <div id="content">
-                <div id="login-container">
-                        <form action="login" id="login-form">
-                            <div class="form-group">
-                                <input name="login" id="login" autocomplete="off" type="text" class="login-input" placeholder="Login" required>
-                            </div>
-                            <div class="form-group">
-                                <input autocomplete="off" id="password" type="password" class="login-input" name="password" placeholder="Hasło" required>
-                            </div>
-                            <button type="submit" class="btn-1 center-row">Zaloguj</button>
-                        </form>
-                        <% if (request.getAttribute("error") != null) { %>
-                            <p style="color:red;"><%= request.getAttribute("error") %></p>
-                        <% } %>
+            <% if(session.getAttribute("user") != null) { %>
+                Jesteś zalogowany
+            <% } else { %>
+                <div id="content">
+                    <div id="login-container">
+                            <form action="login" id="login-form">
+                                <div class="form-group">
+                                    <input name="login" id="login" autocomplete="off" type="text" class="login-input" placeholder="Login" required>
+                                </div>
+                                <div class="form-group">
+                                    <input autocomplete="off" id="password" type="password" class="login-input" name="password" placeholder="Hasło" required>
+                                </div>
+                                <button type="submit" class="btn-1 center-row">Zaloguj</button>
+                            </form>
+                            <% if (request.getAttribute("error") != null) { %>
+                                <p style="color:red;"><%= request.getAttribute("error") %></p>
+                            <% } %>
 
-                    <div id="account">
-                        <p id="no-account">Nie masz jeszcze konta?<a id="act" href="register.jsp">Zarejestruj się</a></p>
+                        <div id="account">
+                            <p id="no-account">Nie masz jeszcze konta?<a id="act" href="register.jsp">Zarejestruj się</a></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            <% } %>
         </div>
     </main>
     <footer id="footer">
