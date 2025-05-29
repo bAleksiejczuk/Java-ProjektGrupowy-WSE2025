@@ -1,6 +1,6 @@
 package com.example.baleksiejczuk;
 
-
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -18,56 +18,63 @@ public class Search extends HttpServlet {
         String query = request.getParameter("query");
         String category = request.getParameter("category");
 
-        if (query == null || query.trim().isEmpty()) {
-            response.getWriter().println("Brak frazy do wyszukania.");
-            return;
-        }
-
-        query = query.toLowerCase();  // ignoruj wielkość liter
-
         List<JSONObject> foundLinks = new ArrayList<>();
+        String errorMessage = null;
 
-        // Ścieżka do folderu JSON-ów w WEB-INF
-        String folderPath = getServletContext().getRealPath("/WEB-INF/links/public");
-        File folder = new File(folderPath);
+        if (query == null || query.trim().isEmpty()) {
+            errorMessage = "Brak frazy do wyszukania.";
+        } else {
+            query = query.toLowerCase();  // ignoruj wielkość liter
 
-        if (folder.exists() && folder.isDirectory()) {
-            File[] files = folder.listFiles((dir, name) -> name.toLowerCase().endsWith(".json"));
+            // Ścieżka do folderu JSON-ów w WEB-INF
+            String folderPath = getServletContext().getRealPath("/WEB-INF/links/public");
+            File folder = new File(folderPath);
 
-            if (files != null) {
-                for (File file : files) {
-                    try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                        StringBuilder jsonBuilder = new StringBuilder();
-                        String line;
-                        while ((line = reader.readLine()) != null) {
-                            jsonBuilder.append(line);
+            if (folder.exists() && folder.isDirectory()) {
+                File[] files = folder.listFiles((dir, name) -> name.toLowerCase().endsWith(".json"));
+
+                if (files != null) {
+                    for (File file : files) {
+                        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                            StringBuilder jsonBuilder = new StringBuilder();
+                            String line;
+                            while ((line = reader.readLine()) != null) {
+                                jsonBuilder.append(line);
+                            }
+
+                            JSONObject json = new JSONObject(jsonBuilder.toString());
+
+                            String url = json.optString("url", "").toLowerCase();
+                            String name = json.optString("name", "").toLowerCase();
+                            String fileCategory = json.optString("category", "");
+
+                            boolean matchText = url.contains(query) || name.contains(query);
+                            boolean matchCategory = (category == null || category.isEmpty()) || fileCategory.equalsIgnoreCase(category);
+
+                            if (matchText && matchCategory) {
+                                foundLinks.add(json);
+                            }
+                        } catch (Exception e) {
+                            System.err.println("Błąd odczytu pliku " + file.getName() + ": " + e.getMessage());
                         }
-
-                        JSONObject json = new JSONObject(jsonBuilder.toString());
-
-                        String url = json.optString("url", "").toLowerCase();
-                        String name = json.optString("name", "").toLowerCase();
-                        String fileCategory = json.optString("category", "");
-
-                        boolean matchText = url.contains(query) || name.contains(query);
-                        boolean matchCategory = (category == null || category.isEmpty()) || fileCategory.equalsIgnoreCase(category);
-
-                        if (matchText && matchCategory) {
-                            foundLinks.add(json);
-                        }
-                    } catch (Exception e) {
-                        System.err.println("Błąd odczytu pliku " + file.getName() + ": " + e.getMessage());
                     }
                 }
             }
+
+//            System.out.println("🔎 Znaleziono " + foundLinks.size() + " dopasowań dla frazy: " + query);
+//            for (JSONObject json : foundLinks) {
+//                System.out.println(json.toString(2));
+//            }
         }
 
-        // Wyświetl znalezione wyniki
-        System.out.println("🔎 Znaleziono " + foundLinks.size() + " dopasowań dla frazy: " + query);
-        for (JSONObject json : foundLinks) {
-            System.out.println(json.toString(2));  // pretty-print
-        }
+        // Przekaż dane do JSP
+        request.setAttribute("foundLinks", foundLinks);
+        request.setAttribute("searchQuery", request.getParameter("query"));
+        request.setAttribute("searchCategory", category);
+        request.setAttribute("errorMessage", errorMessage);
 
-        response.getWriter().println("Znaleziono " + foundLinks.size() + " dopasowań (szczegóły w logach serwera).");
+        // Przekieruj z powrotem do index.jsp
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        dispatcher.forward(request, response);
     }
 }
