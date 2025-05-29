@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="org.json.JSONObject" %>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -28,7 +30,7 @@
             <div id="left-side-nav">
                 <a href="index.jsp"><img src="images/linksIcon.png" alt="Logo aplikacji" id="logo"></a>
                 <% if(session.getAttribute("user") != null) { %>
-                <h2 id="welcome">Cześć, <a href="my_profile.jsp" id="username"><span id="linkers-name">${user.login}</span><!--Niech wstawia session name/login--></a><span class="i s12 y"> !</span></h2>
+                <h2 id="welcome">Cześć, <a href="my_profile.jsp" id="username"><span id="linkers-name">${user.login}</span></a><span class="i s12 y"> !</span></h2>
                 <% } %>
             </div>
             <div id="buttons">
@@ -62,32 +64,63 @@
         <form action="search" method="get" class="search-container">
           <img src="images/spinner.png" alt="spinner" class="spinner">
 
-          <input type="text" name="query" placeholder="Wyszukaj..." class="search-input" />
+          <input type="text" name="query" placeholder="Wyszukaj..." class="search-input"
+                 value="<%= request.getAttribute("searchQuery") != null ? request.getAttribute("searchQuery") : "" %>" />
 
           <select id="category-main" name="category" class="search-input">
-            <option value="" selected>Wszystkie</option>
-            <option value="Edukacja">Edukacja</option>
-            <option value="Rozrywka">Rozrywka</option>
-            <option value="Hobby">Hobby</option>
-            <option value="Zakupy">Zakupy</option>
-            <option value="Zdrowie">Zdrowie</option>
-            <option value="Kulinarny">Kulinarny</option>
-            <option value="Technologia">Technologia</option>
-            <option value="Podróże">Podróże</option>
-            <option value="Social Media">Social Media</option>
-            <option value="Do przeczytania później">Do przeczytania później</option>
-            <option value="Muzyka">Muzyka</option>
-            <option value="Sztuka i kultura">Sztuka i kultura</option>
-            <option value="Motoryzacja">Motoryzacja</option>
-            <option value="Inne">Inne</option>
+            <option value="" <%= request.getAttribute("searchCategory") == null || request.getAttribute("searchCategory").equals("") ? "selected" : "" %>>Wszystkie</option>
+            <option value="Edukacja" <%= "Edukacja".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Edukacja</option>
+            <option value="Rozrywka" <%= "Rozrywka".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Rozrywka</option>
+            <option value="Hobby" <%= "Hobby".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Hobby</option>
+            <option value="Zakupy" <%= "Zakupy".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Zakupy</option>
+            <option value="Zdrowie" <%= "Zdrowie".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Zdrowie</option>
+            <option value="Kulinarny" <%= "Kulinarny".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Kulinarny</option>
+            <option value="Technologia" <%= "Technologia".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Technologia</option>
+            <option value="Podróże" <%= "Podróże".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Podróże</option>
+            <option value="Social Media" <%= "Social Media".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Social Media</option>
+            <option value="Do przeczytania później" <%= "Do przeczytania później".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Do przeczytania później</option>
+            <option value="Muzyka" <%= "Muzyka".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Muzyka</option>
+            <option value="Sztuka i kultura" <%= "Sztuka i kultura".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Sztuka i kultura</option>
+            <option value="Motoryzacja" <%= "Motoryzacja".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Motoryzacja</option>
+            <option value="Inne" <%= "Inne".equals(request.getAttribute("searchCategory")) ? "selected" : "" %>>Inne</option>
           </select>
 
           <button type="submit" class="btn-3">Szukaj</button>
         </form>
 
-      </div>
-      <div id="links-container">
-        <!--Tu będą dodawane linki-->
+        <!-- Wyświetlanie wyników wyszukiwania -->
+        <%
+        String errorMessage = (String) request.getAttribute("errorMessage");
+        List<JSONObject> foundLinks = (List<JSONObject>) request.getAttribute("foundLinks");
+
+        if (errorMessage != null) { %>
+            <div id="search-error">
+                <p style="color: red;"><%= errorMessage %></p>
+            </div>
+        <% } else if (foundLinks != null) { %>
+            <div id="search-results">
+                <h3>Wyniki wyszukiwania (<%= foundLinks.size() %> znaleziono)</h3>
+                <% if (foundLinks.isEmpty()) { %>
+                    <p>Nie znaleziono żadnych wyników.</p>
+                <% } else { %>
+                    <div id="results-container">
+                        <% for (JSONObject link : foundLinks) { %>
+                            <div class="link-item">
+                                <p><strong>Nazwa:</strong> <%= link.optString("name", "Brak") %></p>
+                                <h4>URL:<a href="<%= link.optString("url", "#") %>" target="_blank" rel="noopener noreferrer">
+                                    <%= link.optString("url", "Brak Url") %>
+                                </a></h4>
+                                <p><strong>Kategoria:</strong> <%= link.optString("category", "Brak") %></p>
+                                <p><strong>Dodane Przez:</strong> <%= link.optString("user", "Brak") %></p>
+                                <p><strong>Czas:</strong> <%= link.optString("addedTime", "Brak") %><%= link.optString("addedAt", "Brak") %></p>
+                                <p><strong>Polubienia:</strong> <%= link.optString("likes", "0") %></p>
+                            </div>
+                        <% } %>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+
       </div>
     </div>
   </main>
