@@ -105,28 +105,34 @@
                 <% } else { %>
                     <div id="result-container">
                       <% for (JSONObject link : foundLinks) { %>
-                        <a href="<%= link.optString("url", "#") %>" target="_blank" rel="noopener noreferrer" class="result-link-wrapper">
-                          <div class="result-link-item">
+                        <div class="result-link-item">
 
-                            <div class="result-left">
-                              <span class="result-title-link">Nazwa: <%= link.optString("name", "Brak") %></span><br>
-                              <span class="result-added-link">URL: <%= link.optString("url", "Brak Url") %></span><br>
-                              <span class="result-added-link">Kategoria: <%= link.optString("category", "Brak") %></span><br>
-                              <span class="result-added-link">Dodane przez: <%= link.optString("user", "Brak") %></span>
-                            </div>
+                          <div class="result-left">
+                            <span class="result-title-link">Nazwa: <%= link.optString("name", "Brak") %></span><br>
 
-                            <div class="result-right">
-                              <div class="result-likes-container">
-                                <span class="like-count"><%= link.optString("likes", "0") %></span>
-                                <img class="like" src="images/like.png" alt="Polubień">
-                              </div>
-                              <span class="result-added-time">
-                                <%= link.optString("addedTime", "Brak") %> <%= link.optString("addedAt", "Brak") %>
-                              </span>
-                            </div>
+                            <!-- Tylko to jedno pole jest linkiem -->
+                            <span class="result-added-link">
+                              URL:
+                              <a href="<%= link.optString("url", "#") %>" target="_blank" rel="noopener noreferrer">
+                                <%= link.optString("url", "Brak Url") %>
+                              </a>
+                            </span><br>
 
+                            <span class="result-added-link">Kategoria: <%= link.optString("category", "Brak") %></span><br>
+                            <span class="result-added-link">Dodane przez: <%= link.optString("user", "Brak") %></span>
                           </div>
-                        </a>
+
+                          <div class="result-right">
+                            <div class="result-likes-container">
+                              <span class="like-count"><%= link.optString("likes", "0") %></span>
+                              <img class="like" src="images/like.png" alt="Polubień">
+                            </div>
+                            <span class="result-added-time">
+                              <%= link.optString("addedTime", "Brak") %> <%= link.optString("addedAt", "Brak") %>
+                            </span>
+                          </div>
+
+                        </div>
                       <% } %>
                     </div>
 
